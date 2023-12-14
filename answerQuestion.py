@@ -1,38 +1,48 @@
-import time, random
-min_value = 2
-max_value = 8
+import random, time
+
 operators = ["+", "-", "*"]
-total_problems = 2
+def get_numeric_input(prompt):
+    while True:
+        value = input(prompt + " ")
+        if value.isdigit():
+            return int(value)
+        else:
+            print(value + " is not a number. Please enter a valid number.")
 
-def problem_creator():
-    min_digit = random.randint(min_value, max_value)
-    max_digit = random.randint(min_value, max_value)
-    choose_operators = random.choice(operators)
+min_value = get_numeric_input("Enter Minimum Value:")
+max_value = get_numeric_input("Enter Maximum Value:")
+totalQuestions = get_numeric_input("How many questions:")
 
-    problem = str(min_digit) + " " + choose_operators + " " + str(max_digit)
+def problem_generator():
+
+    lowerNumber = random.randint(min_value,max_value)
+    higherNumber = random.randint(min_value,max_value)
+    take_oprator = random.choice(operators)
+
+    problem = str(lowerNumber) + " " + take_oprator + " " + str(higherNumber)
     solution = eval(problem)
     return solution, problem
 
-wrong_answers = 0
-start_time = time.time()
+wrongAnswers = 0
+startTime = time.time()
 
-for i in range(total_problems):
-    solution, problem = problem_creator()
+for i in range(totalQuestions):
+    solution, problem = problem_generator()
     while True:
-        user_answer = input("Question:" + " " + str(problem) + " " + "Your Answer:" + " ")
-        if user_answer.isdigit():
-            user_answer = int(user_answer)
+        userAnswer = input("Question is" + " " + problem + " " + "and Your answer is" + " : ")
+        if userAnswer.isdigit():
+            userAnswer = int(userAnswer)
 
-            if user_answer == solution:
-                print("Correct Answer")
+            if userAnswer == solution:
+                print("Yeah! Your Answer Is Correct")
                 break
-            elif user_answer < solution:
-                print("Answer Is Greater Than This")
+            elif userAnswer < solution:
+                print("You gussed lower number")
             else:
-                print("Answer Is Lesser Than This")
-            wrong_answers+=1
+                print("You gussed higher number")
+            wrongAnswers += 1
         else:
-            print("Enter A Number")
-end_time = time.time()
-total_time = round(end_time - start_time, 2)
-print("You gave respond to all" + " " + str(total_problems) + " " + "Questions" + " " + "With in" + " " + str(total_time) + " " +"Seconds" + " " + "Wrong Answers" + " " + str(wrong_answers) + ".")
+            print("Please enter an number")
+endTime = time.time()
+totalTime = round(endTime - startTime, 2)
+print("You answered all questions and you gave wrong answers" + " " + str(wrongAnswers) + " " + "Took Time" + " " + str(totalTime))
