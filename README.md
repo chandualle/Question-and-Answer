@@ -1,6 +1,6 @@
 # Question-and-Answer
 How it Works
-The script generates random arithmetic problems with operands between 2 and 8.
+The script generates random arithmetic problems with operands that entered by user.
 Users are prompted to solve these problems and input their answers.
 If the answer is correct, the script provides positive feedback and moves to the next problem.
 For incorrect answers, the script guides users by indicating whether the correct answer is greater or lesser than their input.
