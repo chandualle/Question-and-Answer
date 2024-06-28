@@ -1,4 +1,4 @@
-# Question-and-Answer
+# Python Script for Arithmetic Quiz Application
 How it Works
 The script generates random arithmetic problems with operands that entered by user.
 Users are prompted to solve these problems and input their answers.
